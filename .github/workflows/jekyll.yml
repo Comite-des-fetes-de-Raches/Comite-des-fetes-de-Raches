@@ -47,15 +47,9 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      - name: Preload upload-artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dummy
-          path: README.md # ou tout fichier bidon qui existe
-          retention-days: 1
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
 
   # Deployment job
   deploy:
